@@ -38,8 +38,8 @@ export function ComingSoonPage() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           style={{ filter: "drop-shadow(0 0 28px oklch(0.60 0.19 142 / 0.70)) drop-shadow(0 0 80px oklch(0.60 0.19 142 / 0.35))" }}
         >
-          <svg viewBox="0 0 100 88" width="160" height="141" fill="oklch(0.68 0.19 142)">
-            <path d="M 50,2 L 100,88 L 72,88 L 50,38 L 28,88 L 0,88 Z" />
+          <svg viewBox="0 0 100 92" width="170" height="156" fill="oklch(0.68 0.19 142)">
+            <path d="M 50,3 L 100,92 L 76,92 L 50,20 L 24,92 L 0,92 Z" />
           </svg>
         </motion.div>
 
