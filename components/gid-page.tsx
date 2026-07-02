@@ -79,7 +79,7 @@ function GIDNavbar() {
             </span>
 
             <a
-              href="#"
+              href="#gid-form"
               className="glass-green text-primary px-5 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-[0_0_25px_oklch(0.55_0.185_142_/_0.45)]"
             >
               Unisciti
@@ -357,68 +357,39 @@ function GIDMarquee() {
   )
 }
 
-/* ─── CTA ─── */
-function GIDCTA() {
+/* ─── Form adesione ─── */
+function GIDForm() {
   return (
-    <section className="relative px-4 sm:px-6 lg:px-8 py-24">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="gradient-border noise relative max-w-5xl mx-auto rounded-3xl overflow-hidden bg-[#070b07] px-6 sm:px-12 py-16 sm:py-20 text-center"
-      >
-        <div className="aurora-blob aurora-1 top-[-40%] left-[5%]" />
-        <div className="aurora-blob aurora-2 bottom-[-50%] right-[0%]" />
-        <div className="absolute inset-0 bg-grid pointer-events-none" />
-
-        <div className="relative z-10">
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="glass-green inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-primary rounded-full px-4 py-1.5 mb-6"
-          >
-            Che aspetti?
-          </motion.span>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-6xl font-black uppercase tracking-tight text-white mb-5"
+    <section id="gid-form" className="relative px-4 sm:px-6 lg:px-8 py-24 border-t border-primary/10">
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at top, oklch(0.55 0.185 142 / 0.07), transparent 70%)" }}
+      />
+      <div className="relative max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h2
+            className="text-4xl sm:text-5xl font-black uppercase tracking-tight text-white mb-3"
             style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
           >
             RENDITI <span className="text-gradient-green">ATTIVO</span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.45, duration: 0.6 }}
-            className="text-white/60 max-w-md mx-auto mb-10 leading-relaxed"
-          >
-            Unisciti a migliaia di giovani italiani che stanno già costruendo il futuro.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.55, duration: 0.6 }}
-          >
-            <a
-              href="#"
-              className="shimmer relative inline-block px-14 py-4 rounded-full bg-primary text-white font-black text-base uppercase tracking-widest overflow-hidden hover:bg-primary/90 transition-all duration-300 shadow-[0_0_45px_oklch(0.55_0.185_142_/_0.40)] hover:shadow-[0_0_70px_oklch(0.55_0.185_142_/_0.60)] hover:-translate-y-0.5 active:scale-95"
-            >
-              Unisciti ora
-            </a>
-          </motion.div>
-        </div>
-      </motion.div>
+          </h2>
+          <p className="text-sm mb-10" style={{ color: "oklch(0.50 0.01 142)" }}>
+            Compila il form per aderire a GID.
+          </p>
+          <iframe
+            src="https://form.generazione.network/form/adesione"
+            width="100%"
+            height="500px"
+            frameBorder="0"
+            className="w-full rounded-xl"
+          />
+        </motion.div>
+      </div>
     </section>
   )
 }
@@ -468,7 +439,7 @@ export function GIDPage() {
       <GIDHero />
       <GIDIdentity />
       <GIDMarquee />
-      <GIDCTA />
+      <GIDForm />
       <GIDFooter />
     </main>
   )
