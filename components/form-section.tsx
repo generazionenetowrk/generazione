@@ -1,20 +1,8 @@
 "use client"
 
-import { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 
 export function FormSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!containerRef.current) return
-    const script = document.createElement("script")
-    script.src = "https://generazione.kit.com/c766f43a48/index.js"
-    script.async = true
-    script.setAttribute("data-uid", "c766f43a48")
-    containerRef.current.appendChild(script)
-  }, [])
-
   return (
     <section
       id="apply"
@@ -40,10 +28,16 @@ export function FormSection() {
             <span className="text-gradient-green">OGGI</span>
           </h2>
           <p className="text-sm mb-12" style={{ color: "oklch(0.50 0.01 142)" }}>
-            Compila il form per ricevere l'accesso.
+            Compila il form per diventare membro.
           </p>
 
-          <div ref={containerRef} className="w-full" />
+          <iframe
+            src="https://form.generazione.network/form/contatto"
+            width="100%"
+            height="500px"
+            frameBorder="0"
+            className="w-full rounded-xl"
+          />
         </motion.div>
       </div>
     </section>
