@@ -13,7 +13,7 @@ const SESSION_KEY = "gaz_members_unlocked"
 
 /* ─── Role data ─── */
 const activeRoles = [
-  { id: 1, label: "GID", number: "01", sublabel: "Attivismo", image: "/placeholder.jpg", href: "/gid" },
+  { id: 1, label: "GID", number: "01", sublabel: "Attivismo", image: "/copertina gid.JPG", href: "/gid" },
   { id: 3, label: "Clippers\nArmada", number: "02", sublabel: "Sport & Cultura", image: "/placeholder.jpg", href: "/clippers-armada" },
 ]
 
