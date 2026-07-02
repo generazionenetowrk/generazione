@@ -14,10 +14,10 @@ const SESSION_KEY = "gaz_members_unlocked"
 /* ─── Role data ─── */
 const activeRoles = [
   { id: 1, label: "GID", number: "01", sublabel: "Attivismo", image: "/copertina gid.JPG", href: "/gid" },
-  { id: 3, label: "Clippers\nArmada", number: "02", sublabel: "Sport & Cultura", image: "/placeholder.jpg", href: "/clippers-armada" },
 ]
 
 const comingSoonRoles = [
+  { id: 3, label: "Clippers\nArmada", image: "/placeholder.jpg" },
   { id: 4, label: "Influencer\nNetwork", image: "/placeholder.jpg" },
   { id: 5, label: "Legal\nSquad", image: "/placeholder.jpg" },
   { id: 6, label: "Student\nIntellectuals", image: "/placeholder.jpg" },
