@@ -55,7 +55,7 @@ function ActiveCard({ role, index }: { role: typeof activeRoles[number]; index: 
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       style={{ transform, transition: "transform 0.15s ease-out" }}
-      className="group relative aspect-[4/5] sm:aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer shadow-[0_8px_30px_-8px_oklch(0.30_0.05_142_/_0.25)] hover:shadow-[0_20px_50px_-12px_oklch(0.45_0.15_142_/_0.40)] transition-shadow duration-500"
+      className="block group relative aspect-[4/5] sm:aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer shadow-[0_8px_30px_-8px_oklch(0.30_0.05_142_/_0.25)] hover:shadow-[0_20px_50px_-12px_oklch(0.45_0.15_142_/_0.40)] transition-shadow duration-500"
     >
       <img
         src={role.image}
@@ -123,8 +123,8 @@ function MembersGrid() {
         </motion.div>
 
         {/* Active roles */}
-        <div className="flex justify-center mb-8">
-          <div className="w-full max-w-xs sm:max-w-sm">
+        <div className="flex justify-center mb-12">
+          <div className="w-full max-w-sm sm:max-w-md">
             {activeRoles.map((role, i) => (
               <ActiveCard key={role.id} role={role} index={i} />
             ))}
