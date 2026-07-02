@@ -123,10 +123,12 @@ function MembersGrid() {
         </motion.div>
 
         {/* Active roles */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8 max-w-2xl mx-auto">
-          {activeRoles.map((role, i) => (
-            <ActiveCard key={role.id} role={role} index={i} />
-          ))}
+        <div className="flex justify-center mb-8">
+          <div className="w-full max-w-xs sm:max-w-sm">
+            {activeRoles.map((role, i) => (
+              <ActiveCard key={role.id} role={role} index={i} />
+            ))}
+          </div>
         </div>
 
         {/* Coming soon separator */}
@@ -145,39 +147,75 @@ function MembersGrid() {
         </motion.div>
 
         {/* Coming soon */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {comingSoonRoles.map((role, i) => (
+        <div className="flex flex-col items-center gap-4">
+          <div className="grid grid-cols-3 gap-4 w-full max-w-2xl">
+            {comingSoonRoles.slice(0, 3).map((role, i) => (
+              <motion.div
+                key={role.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45 + i * 0.08, duration: 0.5 }}
+                className="relative aspect-square rounded-xl overflow-hidden cursor-default select-none"
+              >
+                <img
+                  src={role.image}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover grayscale blur-[2px] scale-105 opacity-60"
+                  draggable={false}
+                />
+                <div className="absolute inset-0 bg-white/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3">
+                  <span
+                    className="block text-white/90 font-black text-[11px] uppercase tracking-widest whitespace-pre-line leading-snug"
+                    style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  >
+                    {role.label}
+                  </span>
+                </div>
+                <div className="absolute top-3 right-3">
+                  <span className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-[0.15em] text-zinc-600 bg-white/85 backdrop-blur-sm rounded-full px-2 py-1">
+                    <Lock className="w-2.5 h-2.5" />
+                    Soon
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <div className="grid grid-cols-2 gap-4 w-full max-w-[calc(2/3*32rem+1rem)]">
+            {comingSoonRoles.slice(3).map((role, i) => (
             <motion.div
               key={role.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 + i * 0.08, duration: 0.5 }}
-              className="relative aspect-square rounded-xl overflow-hidden cursor-default select-none"
-            >
-              <img
-                src={role.image}
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover grayscale blur-[2px] scale-105 opacity-60"
-                draggable={false}
-              />
-              <div className="absolute inset-0 bg-white/40" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-3 left-3 right-3">
-                <span
-                  className="block text-white/90 font-black text-[11px] uppercase tracking-widest whitespace-pre-line leading-snug"
-                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
-                >
-                  {role.label}
-                </span>
-              </div>
-              <div className="absolute top-3 right-3">
-                <span className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-[0.15em] text-zinc-600 bg-white/85 backdrop-blur-sm rounded-full px-2 py-1">
-                  <Lock className="w-2.5 h-2.5" />
-                  Soon
-                </span>
-              </div>
-            </motion.div>
-          ))}
+                  transition={{ delay: 0.69 + i * 0.08, duration: 0.5 }}
+                className="relative aspect-square rounded-xl overflow-hidden cursor-default select-none"
+              >
+                <img
+                  src={role.image}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover grayscale blur-[2px] scale-105 opacity-60"
+                  draggable={false}
+                />
+                <div className="absolute inset-0 bg-white/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3">
+                  <span
+                    className="block text-white/90 font-black text-[11px] uppercase tracking-widest whitespace-pre-line leading-snug"
+                    style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  >
+                    {role.label}
+                  </span>
+                </div>
+                <div className="absolute top-3 right-3">
+                  <span className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-[0.15em] text-zinc-600 bg-white/85 backdrop-blur-sm rounded-full px-2 py-1">
+                    <Lock className="w-2.5 h-2.5" />
+                    Soon
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
