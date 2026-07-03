@@ -289,7 +289,7 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
 
         <p className="mt-8 text-xs" style={{ color: "oklch(0.40 0.01 142)" }}>
           Non hai ancora la password?{" "}
-          <a href="#apply" className="text-primary hover:text-primary/80 transition-colors">
+          <a href="/#apply" className="text-primary hover:text-primary/80 transition-colors">
             Iscriviti
           </a>
         </p>
