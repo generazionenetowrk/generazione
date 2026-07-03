@@ -2,7 +2,21 @@
 
 import { useState, useCallback, useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
+import Script from "next/script"
 import { GenerazioneLogo } from "@/components/generazione-logo"
+
+const WISTIA_MEDIA_ID = "eailnqdsim"
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "wistia-player": React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        "media-id"?: string
+        aspect?: string | number
+      }
+    }
+  }
+}
 
 const container = {
   hidden: { opacity: 0 },
@@ -20,9 +34,6 @@ const fadeUp = {
     transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] as const },
   },
 }
-
-const VSL_VIDEO_SRC: string | null = null
-const VSL_POSTER_SRC: string | undefined = undefined
 
 const particles = [
   { left: "8%", duration: 14, delay: 0 },
@@ -122,35 +133,24 @@ export function GenerazioneHero() {
           <strong className="text-primary font-semibold">futuro</strong>
         </motion.p>
 
-        {/* VSL frame */}
+        {/* VSL frame — Wistia embed */}
         <motion.div id="manifesto" variants={fadeUp} className="w-full max-w-4xl mx-auto mb-12">
-          <div className="gradient-border vsl-neon glass relative aspect-video rounded-3xl flex items-center justify-center overflow-hidden group cursor-pointer transition-transform duration-500 hover:scale-[1.015]">
-            {VSL_VIDEO_SRC ? (
-              <video
-                src={VSL_VIDEO_SRC}
-                poster={VSL_POSTER_SRC}
-                controls
-                playsInline
-                preload="metadata"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            ) : (
-              <>
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/[0.04] transition-colors duration-500" />
-                <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-primary/60 rounded-tl-sm group-hover:border-primary transition-colors duration-300" />
-                <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-primary/60 rounded-tr-sm group-hover:border-primary transition-colors duration-300" />
-                <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-primary/60 rounded-bl-sm group-hover:border-primary transition-colors duration-300" />
-                <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-primary/60 rounded-br-sm group-hover:border-primary transition-colors duration-300" />
-                <div className="relative z-10 text-center">
-                  <div className="glass-strong w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/15 group-hover:shadow-[0_0_35px_oklch(0.55_0.185_142_/_0.45)] group-hover:scale-110 transition-all duration-300">
-                    <div className="w-0 h-0 border-t-[11px] border-t-transparent border-b-[11px] border-b-transparent border-l-[20px] border-l-primary ml-1.5" />
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary/80 group-hover:text-primary transition-colors duration-300">
-                    Guarda il Manifesto
-                  </span>
-                </div>
-              </>
-            )}
+          <Script src="https://fast.wistia.com/player.js" strategy="lazyOnload" />
+          <Script
+            src={`https://fast.wistia.com/embed/${WISTIA_MEDIA_ID}.js`}
+            strategy="lazyOnload"
+            type="module"
+          />
+          <style>{`
+            wistia-player[media-id='${WISTIA_MEDIA_ID}']:not(:defined) {
+              background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/${WISTIA_MEDIA_ID}/swatch');
+              display: block;
+              filter: blur(5px);
+              padding-top: 56.25%;
+            }
+          `}</style>
+          <div className="gradient-border vsl-neon glass relative rounded-3xl overflow-hidden">
+            <wistia-player media-id={WISTIA_MEDIA_ID} aspect="1.7777777777777777" />
           </div>
         </motion.div>
 
