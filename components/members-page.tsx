@@ -5,11 +5,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ArrowLeft, Lock, ArrowUpRight } from "lucide-react"
 import { GenerazioneLogo } from "@/components/generazione-logo"
 
-/* Password check — set NEXT_PUBLIC_MEMBERS_PASSWORD in .env.local
-   If the env var is not set, any non-empty input is accepted (dev mode). */
-const MEMBERS_PASSWORD = process.env.NEXT_PUBLIC_MEMBERS_PASSWORD ?? ""
-
-const SESSION_KEY = "gaz_members_unlocked"
+/* Password check happens server-side via /api/members/login —
+   set MEMBERS_PASSWORD (no NEXT_PUBLIC prefix) in .env.local and on Vercel. */
 
 /* ─── Role data ─── */
 const activeRoles = [
@@ -199,24 +196,25 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
   const [shake, setShake] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
 
-    const correct = MEMBERS_PASSWORD === "" || value === MEMBERS_PASSWORD
+    const res = await fetch("/api/members/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: value }),
+    }).catch(() => null)
 
-    setTimeout(() => {
-      setLoading(false)
-      if (correct) {
-        sessionStorage.setItem(SESSION_KEY, "1")
-        onUnlock()
-      } else {
-        setError(true)
-        setShake(true)
-        setValue("")
-        setTimeout(() => setShake(false), 500)
-      }
-    }, 400)
+    setLoading(false)
+    if (res?.ok) {
+      onUnlock()
+    } else {
+      setError(true)
+      setShake(true)
+      setValue("")
+      setTimeout(() => setShake(false), 500)
+    }
   }
 
   return (
@@ -345,12 +343,19 @@ export function MembersPage() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     if (params.get("gate") === "1") {
-      sessionStorage.removeItem(SESSION_KEY)
       window.history.replaceState({}, "", "/members")
-    } else if (sessionStorage.getItem(SESSION_KEY) === "1") {
-      setUnlocked(true)
+      fetch("/api/members/login", { method: "DELETE" })
+        .catch(() => null)
+        .finally(() => setChecking(false))
+    } else {
+      fetch("/api/members/login")
+        .then((r) => r.json())
+        .then((d) => {
+          if (d.unlocked) setUnlocked(true)
+        })
+        .catch(() => null)
+        .finally(() => setChecking(false))
     }
-    setChecking(false)
   }, [])
 
   if (checking) return null

@@ -4,32 +4,32 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 
-const MEMBERS_PASSWORD = process.env.NEXT_PUBLIC_MEMBERS_PASSWORD ?? ""
-const SESSION_KEY = "gaz_members_unlocked"
-
 export function MembersTeaser() {
   const [value, setValue] = useState("")
   const [error, setError] = useState(false)
   const [shake, setShake] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!value) return
     setLoading(true)
-    const correct = MEMBERS_PASSWORD === "" || value === MEMBERS_PASSWORD
-    setTimeout(() => {
+
+    const res = await fetch("/api/members/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: value }),
+    }).catch(() => null)
+
+    if (res?.ok) {
+      window.location.href = "/members"
+    } else {
       setLoading(false)
-      if (correct) {
-        sessionStorage.setItem(SESSION_KEY, "1")
-        window.location.href = "/members"
-      } else {
-        setError(true)
-        setShake(true)
-        setValue("")
-        setTimeout(() => setShake(false), 500)
-      }
-    }, 350)
+      setError(true)
+      setShake(true)
+      setValue("")
+      setTimeout(() => setShake(false), 500)
+    }
   }
 
   return (

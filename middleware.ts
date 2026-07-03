@@ -7,8 +7,8 @@ const PREVIEW_COOKIE = 'preview_bypass'
 export function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl
 
-  // Allow the coming soon page always
-  if (pathname === '/comingsoon') {
+  // Allow the coming soon page and API routes always
+  if (pathname === '/comingsoon' || pathname.startsWith('/api/')) {
     return NextResponse.next()
   }
 
