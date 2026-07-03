@@ -1,7 +1,6 @@
-import { EntrepreneursNetworkPage } from "@/components/entrepreneurs-network-page"
+import { redirect } from "next/navigation"
 
-export const metadata = { title: "Entrepreneurs Network — GenerΛzione" }
-
+// Sezione non ancora lanciata — riattivare reimportando EntrepreneursNetworkPage
 export default function EntrepreneursNetworkRoute() {
-  return <EntrepreneursNetworkPage />
+  redirect("/")
 }

@@ -1,7 +1,6 @@
-import { SubsitePlaceholder } from "@/components/subsite-placeholder"
+import { redirect } from "next/navigation"
 
-export const metadata = { title: "Influencer Network — GenerΛzione" }
-
-export default function InfluencerNetworkPage() {
-  return <SubsitePlaceholder number="02" name="Influencer Network" tagline="La rete dei creatori italiani" />
+// Sezione non ancora lanciata — riattivare reimportando SubsitePlaceholder
+export default function InfluencerNetworkRoute() {
+  redirect("/")
 }

@@ -49,7 +49,7 @@ export function GenerazioneNavbar() {
       >
         <div className="px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
-            <a href="#" className="flex-shrink-0 transition-transform duration-300 hover:scale-105">
+            <a href="/" className="flex-shrink-0 transition-transform duration-300 hover:scale-105">
               <GenerazioneLogo className="h-7 w-auto" />
             </a>
 

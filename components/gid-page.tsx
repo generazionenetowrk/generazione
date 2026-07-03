@@ -416,7 +416,7 @@ function GIDFooter() {
             Chi Siamo
           </a>
           <a
-            href="#"
+            href="#gid-form"
             className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
           >
             Unisciti
