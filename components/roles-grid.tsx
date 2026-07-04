@@ -10,8 +10,7 @@ import { Lock, ArrowUpRight } from "lucide-react"
 */
 const activeRoles = [
   { id: 1, label: "GID", number: "01", image: "/placeholder.jpg", href: "/gid" },
-  { id: 2, label: "Entrepreneurs\nNetwork", number: "02", image: "/placeholder.jpg", href: "/entrepreneurs-network" },
-  { id: 3, label: "Clippers\nArmada", number: "03", image: "/placeholder.jpg", href: "/clippers-armada" },
+  { id: 3, label: "Clippers\nArmada", number: "02", image: "/placeholder.jpg", href: "/clippers-armada" },
 ]
 
 const comingSoonRoles = [
