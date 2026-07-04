@@ -62,9 +62,11 @@ export function MembersTeaser() {
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch gap-4">
           <motion.input
             type="password"
+            name="members-teaser-gate"
             value={value}
             onChange={(e) => { setValue(e.target.value); setError(false) }}
             placeholder="Inserisci la password"
+            autoComplete="off"
             animate={shake ? { x: [-8, 8, -6, 6, -3, 3, 0] } : {}}
             transition={{ duration: 0.45 }}
             className="flex-1 px-6 py-5 rounded-2xl text-base font-semibold text-foreground placeholder-foreground/25 outline-none"

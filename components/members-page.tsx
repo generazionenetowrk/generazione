@@ -246,10 +246,11 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
           >
             <input
               type="password"
+              name="members-gate"
               value={value}
               onChange={(e) => { setValue(e.target.value); setError(false) }}
               placeholder="Password"
-              autoComplete="current-password"
+              autoComplete="off"
               className="w-full px-5 py-3.5 rounded-2xl text-sm font-semibold text-foreground placeholder-foreground/25 outline-none transition-all duration-200 focus:ring-2"
               style={{
                 background: "oklch(1 0 0 / 0.05)",

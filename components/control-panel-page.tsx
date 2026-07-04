@@ -72,9 +72,11 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
       >
         <motion.input
           type="password"
+          name="control-panel-secret"
           value={value}
           onChange={(e) => { setValue(e.target.value); setError(false) }}
           placeholder="Password"
+          autoComplete="off"
           autoFocus
           animate={shake ? { x: [-8, 8, -6, 6, -3, 3, 0] } : {}}
           transition={{ duration: 0.45 }}

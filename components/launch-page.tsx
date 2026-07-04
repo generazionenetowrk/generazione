@@ -139,9 +139,11 @@ function StepThreeSections() {
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch gap-3">
         <motion.input
           type="password"
+          name="launch-gate"
           value={value}
           onChange={(e) => { setValue(e.target.value); setError(false) }}
           placeholder="Password"
+          autoComplete="off"
           animate={shake ? { x: [-8, 8, -6, 6, -3, 3, 0] } : {}}
           transition={{ duration: 0.45 }}
           className="flex-1 px-5 py-3.5 rounded-2xl text-sm font-semibold text-white placeholder-white/25 outline-none"
