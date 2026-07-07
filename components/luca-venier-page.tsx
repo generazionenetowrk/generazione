@@ -1,5 +1,7 @@
 "use client"
 
+import { GenerazioneLogo } from "@/components/generazione-logo"
+
 /* Icone inline, coerenti con lo stile già usato in landing-footer.tsx */
 function InstagramIcon({ className }: { className?: string }) {
   return (
@@ -84,10 +86,23 @@ const mainLinks = [
 
 export function LucaVenierPage() {
   return (
-    <main className="min-h-screen bg-white flex flex-col items-center px-4 py-12 sm:py-16">
-      <div className="w-full max-w-md flex flex-col items-center">
+    <main
+      className="noise relative min-h-screen flex flex-col items-center px-4 py-12 sm:py-16 overflow-hidden"
+      style={{ background: "#070b07", color: "#f0f5f0" }}
+    >
+      <div className="aurora-blob aurora-1 top-[-10%] left-[10%] pointer-events-none" />
+      <div className="aurora-blob aurora-2 top-[30%] right-[5%] pointer-events-none" />
+      <div className="aurora-blob aurora-3 bottom-[5%] left-[30%] pointer-events-none" />
+      <div className="absolute inset-0 bg-grid pointer-events-none" />
+      <div className="absolute inset-0 hero-glow pointer-events-none" />
+
+      <div className="relative z-10 w-full max-w-md flex flex-col items-center">
+        <a href="/" className="mb-6">
+          <GenerazioneLogo className="h-6 w-auto" />
+        </a>
+
         {/* Avatar */}
-        <div className="w-28 h-28 rounded-full bg-zinc-200 overflow-hidden mb-4">
+        <div className="w-28 h-28 rounded-full overflow-hidden mb-4 gradient-border">
           <img
             src="/luca venier.png"
             alt="Luca Venier"
@@ -98,7 +113,7 @@ export function LucaVenierPage() {
 
         {/* Name */}
         <h1
-          className="text-xl font-black text-zinc-900 mb-5"
+          className="text-xl font-black uppercase tracking-tight text-white mb-5"
           style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
         >
           Luca Venier
@@ -113,7 +128,7 @@ export function LucaVenierPage() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="text-zinc-900 hover:text-primary transition-colors"
+              className="text-white/60 hover:text-primary transition-colors"
             >
               <s.icon className="w-6 h-6" />
             </a>
@@ -128,11 +143,11 @@ export function LucaVenierPage() {
               href={l.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative flex items-center justify-center gap-2 w-full px-6 py-4 rounded-full bg-zinc-100 hover:bg-zinc-200 transition-colors duration-200"
+              className="glass-strong relative flex items-center justify-center gap-2 w-full px-6 py-4 rounded-full hover:bg-primary/10 hover:shadow-[0_0_25px_oklch(0.55_0.185_142_/_0.25)] transition-all duration-300"
             >
               <l.icon className={`w-5 h-5 absolute left-5 ${l.iconColor}`} />
               <span
-                className="text-sm font-bold uppercase tracking-wide text-zinc-900 text-center"
+                className="text-sm font-bold uppercase tracking-wide text-white text-center"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
                 {l.label}
@@ -142,21 +157,21 @@ export function LucaVenierPage() {
         </div>
 
         {/* Support section */}
-        <div className="w-full border-t border-zinc-200 mt-10 pt-8 flex flex-col items-center">
+        <div className="w-full border-t border-primary/10 mt-10 pt-8 flex flex-col items-center">
           <h2
-            className="text-lg font-black uppercase tracking-tight text-zinc-900 mb-5"
+            className="text-lg font-black uppercase tracking-tight text-white mb-5"
             style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
           >
-            Supporta il mio lavoro
+            Supporta il <span className="text-gradient-green">mio lavoro</span>
           </h2>
           <a
             href="https://coindrop.to/lucavenier"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full px-6 py-4 rounded-full bg-zinc-100 hover:bg-zinc-200 transition-colors duration-200"
+            className="glass-green flex items-center justify-center gap-2 w-full px-6 py-4 rounded-full text-primary hover:bg-primary hover:text-white transition-all duration-300"
           >
             <span
-              className="text-sm font-bold uppercase tracking-wide text-zinc-900"
+              className="text-sm font-black uppercase tracking-wide"
               style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
               Indirizzi Crypto ↓
