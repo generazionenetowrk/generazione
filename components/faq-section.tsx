@@ -18,6 +18,10 @@ const faqs = [
     a: "Le sezioni operative si sbloccano con la password che ricevi via email dopo l'iscrizione a membro. Ogni ruolo (Attivismo, Clippers, Studenti, Influencers…) ha una sua area dedicata, accessibile solo ai membri.",
   },
   {
+    q: "Ho fatto l'application per una sezione, perché non ho ricevuto risposta via email?",
+    a: "Ogni candidatura viene esaminata dal responsabile della sezione. Non tutte vengono accettate: solo chi risulta più in linea con i requisiti del ruolo riceve una risposta positiva.",
+  },
+  {
     q: "Posso uscire quando voglio?",
     a: "Sì. GenerΛzione non è un contratto, un partito o una setta. Se vuoi uscire, disiscriviti dalla mailing list e abbandona i canali Telegram. Nessuna trattenuta, nessuna spiegazione dovuta.",
   },
