@@ -372,11 +372,6 @@ function CAForm() {
             <div className="w-full min-h-[560px] rounded-2xl border-2 border-dashed border-zinc-200 bg-white flex flex-col items-center justify-center gap-3">
               <span className="text-4xl select-none">📋</span>
               <p className="text-zinc-500 text-sm font-semibold">Form di candidatura in arrivo</p>
-              <p className="text-zinc-400 text-xs">
-                Imposta{" "}
-                <code className="bg-zinc-100 px-1 py-0.5 rounded text-[11px]">FORM_EMBED_SRC</code>{" "}
-                in clippers-armada-page.tsx
-              </p>
             </div>
           )}
         </motion.div>

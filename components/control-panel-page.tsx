@@ -15,7 +15,7 @@ const routes: { path: string; label: string; status: RouteStatus }[] = [
   { path: "/members", label: "Sezioni — protetta da password", status: "live-password" },
   { path: "/launch", label: "Istruzioni post-iscrizione — password in chiaro, da rivedere", status: "live-password" },
   { path: "/comingsoon", label: "Coming soon — non linkata pubblicamente", status: "live-unlisted" },
-  { path: "/clippers-armada", label: "Clippers Armada — redirect a /", status: "redirect" },
+  { path: "/clippers-armada", label: "Clippers Armada — video e form ancora placeholder", status: "live" },
   { path: "/influencer-network", label: "Influencer Network — redirect a /", status: "redirect" },
 ]
 

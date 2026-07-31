@@ -1,6 +1,7 @@
-import { redirect } from "next/navigation"
+import { ClippersArmadaPage } from "@/components/clippers-armada-page"
 
-// Sezione non ancora lanciata — riattivare reimportando ClippersArmadaPage
+export const metadata = { title: "Clippers Armada — GenerΛzione" }
+
 export default function ClippersArmadaRoute() {
-  redirect("/")
+  return <ClippersArmadaPage />
 }
