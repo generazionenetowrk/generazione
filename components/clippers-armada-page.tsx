@@ -7,7 +7,7 @@ import { GenerazioneLogo } from "@/components/generazione-logo"
 
 // Drop in your form embed URL when ready (Typeform, JotForm, etc.)
 // e.g. "https://form.typeform.com/to/XXXXXXXX"
-const FORM_EMBED_SRC: string | null = null
+const FORM_EMBED_SRC: string | null = "https://form.generazione.network/form/clippers"
 
 /* ─── Navbar ─── */
 function CANavbar() {
