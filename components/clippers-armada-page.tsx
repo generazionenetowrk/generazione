@@ -332,6 +332,81 @@ function CAForm() {
   )
 }
 
+/* ─── What you get ─── */
+const perks = [
+  {
+    title: "La skill più importante del 21esimo secolo.",
+    desc: "Crescita social — hook writing, editing video, algorithmic thinking, community building — è forse la competenza più spendibile dell'era attuale. Chi sa farla oggi è indispensabile per qualunque brand, azienda, movimento, personaggio pubblico. Qui te la insegniamo sul campo, non su un corso astratto da 500€.",
+  },
+  {
+    title: "Risorse operative continue.",
+    desc: "Pacchi b-roll no-copyright · font e grading premium · template CapCut · hook library · guide tecniche · esempi di clip che hanno performato. Roba che se dovessi comprartela costerebbe centinaia di euro.",
+  },
+  {
+    title: "Una tribe.",
+    desc: "Non lavori da solo dietro uno schermo. Nel canale Telegram — Clipper Armada trovi decine di altri giovani italiani con lo stesso obiettivo.",
+  },
+]
+
+function CAPerks() {
+  return (
+    <section className="bg-white px-4 sm:px-6 lg:px-8 py-24 border-t border-zinc-100">
+      <div className="max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h2
+            className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-zinc-900 mb-12"
+            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+          >
+            Cosa riceverai <span style={{ color: "oklch(0.60 0.19 142)" }}>ed imparerai.</span>
+          </h2>
+        </motion.div>
+
+        <div className="space-y-10 mb-14">
+          {perks.map((perk, i) => (
+            <motion.div
+              key={perk.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="border-l-4 pl-6 py-1"
+              style={{ borderColor: "oklch(0.60 0.19 142)" }}
+            >
+              <h3
+                className="text-lg font-black text-zinc-900 mb-2"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                {perk.title}
+              </h3>
+              <p className="text-zinc-500 leading-relaxed">{perk.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center"
+        >
+          <a
+            href="#apply"
+            className="inline-block px-10 py-4 rounded-full bg-primary text-white font-black text-sm uppercase tracking-widest hover:bg-primary/90 transition-all duration-300 shadow-[0_0_35px_oklch(0.55_0.185_142_/_0.35)] hover:shadow-[0_0_55px_oklch(0.55_0.185_142_/_0.55)] hover:-translate-y-0.5 active:scale-95"
+          >
+            Unisciti
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
 /* ─── Analytics preview ─── */
 const analyticsShots = [
   "/analytics/analytics-1.png",
@@ -422,6 +497,7 @@ export function ClippersArmadaPage() {
       <CAHero />
       <CAConcept />
       <CAForm />
+      <CAPerks />
       <CAAnalytics />
       <CAFooter />
     </main>
