@@ -219,6 +219,152 @@ function CAConcept() {
   )
 }
 
+/* ─── Flow diagram: long-form → Clippers Armada → platforms ─── */
+function PlatformIcon({ name, className }: { name: "instagram" | "tiktok" | "youtube" | "x"; className?: string }) {
+  if (name === "instagram") {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+      </svg>
+    )
+  }
+  if (name === "tiktok") {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className}>
+        <path d="M16.6 5.82c-.8-.85-1.24-1.96-1.24-3.12h-3.06v13.9c0 1.48-1.2 2.68-2.68 2.68a2.68 2.68 0 0 1-2.68-2.68 2.68 2.68 0 0 1 2.68-2.68c.28 0 .55.04.8.12v-3.1a5.8 5.8 0 0 0-.8-.06A5.75 5.75 0 0 0 4 16.62a5.75 5.75 0 0 0 5.75 5.75 5.75 5.75 0 0 0 5.75-5.75V9.4a8.9 8.9 0 0 0 5.02 1.54V7.87c-1.1 0-2.13-.35-2.97-.94a5.7 5.7 0 0 1-.95-1.1Z" />
+      </svg>
+    )
+  }
+  if (name === "youtube") {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M22.54 6.42A2.78 2.78 0 0 0 20.6 4.46C18.88 4 12 4 12 4s-6.88 0-8.6.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none" />
+      </svg>
+    )
+  }
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M18.24 2h3.3l-7.2 8.2L23 22h-6.6l-5.2-6.8L5.2 22H1.9l7.7-8.8L1 2h6.8l4.7 6.2L18.24 2Zm-1.15 18h1.8L7 4h-1.9l12 16Z" />
+    </svg>
+  )
+}
+
+const outputPlatforms: { name: "instagram" | "tiktok" | "youtube" | "x"; label: string; y: number }[] = [
+  { name: "instagram", label: "Instagram", y: 60 },
+  { name: "tiktok", label: "TikTok", y: 160 },
+  { name: "youtube", label: "YouTube", y: 260 },
+  { name: "x", label: "X", y: 360 },
+]
+
+function CAFlowDiagramVisual() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      className="gradient-border vsl-neon relative rounded-3xl overflow-hidden bg-[#070b07] px-4 py-10"
+    >
+      <div className="absolute inset-0 bg-grid pointer-events-none opacity-40" />
+
+      <div className="relative w-full" style={{ aspectRatio: "800 / 420" }}>
+            <svg viewBox="0 0 800 420" className="absolute inset-0 w-full h-full" fill="none">
+              <defs>
+                <marker id="ca-dot" markerWidth="6" markerHeight="6" refX="3" refY="3">
+                  <circle cx="3" cy="3" r="3" fill="oklch(0.70 0.19 142)" />
+                </marker>
+              </defs>
+
+              {/* Input path: long-form -> hub */}
+              <path
+                id="ca-path-in"
+                d="M 130 210 C 250 210, 280 210, 360 210"
+                stroke="oklch(0.55 0.185 142 / 0.35)"
+                strokeWidth="1.5"
+                strokeDasharray="4 5"
+              />
+              <circle r="4" fill="oklch(0.70 0.19 142)">
+                <animateMotion dur="2.2s" repeatCount="indefinite" begin="0s">
+                  <mpath href="#ca-path-in" />
+                </animateMotion>
+              </circle>
+
+              {/* Output paths: hub -> each platform */}
+              {outputPlatforms.map((p, i) => {
+                const pathId = `ca-path-out-${i}`
+                const d = `M 440 210 C 540 210, 560 ${p.y}, 660 ${p.y}`
+                return (
+                  <g key={p.name}>
+                    <path
+                      id={pathId}
+                      d={d}
+                      stroke="oklch(0.55 0.185 142 / 0.35)"
+                      strokeWidth="1.5"
+                      strokeDasharray="4 5"
+                    />
+                    <circle r="4" fill="oklch(0.70 0.19 142)">
+                      <animateMotion dur="2.6s" repeatCount="indefinite" begin={`${0.3 + i * 0.25}s`}>
+                        <mpath href={`#${pathId}`} />
+                      </animateMotion>
+                    </circle>
+                  </g>
+                )
+              })}
+            </svg>
+
+            {/* Long-form input node */}
+            <div
+              className="absolute flex flex-col items-center gap-2"
+              style={{ left: "16.25%", top: "50%", transform: "translate(-50%, -50%)" }}
+            >
+              <div className="w-16 h-16 rounded-2xl glass-strong flex items-center justify-center">
+                <div className="w-0 h-0 border-t-[9px] border-t-transparent border-b-[9px] border-b-transparent border-l-[16px] border-l-primary ml-1" />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-white/60 whitespace-nowrap">
+                Contenuto Lungo
+              </span>
+            </div>
+
+            {/* Central hub */}
+            <div
+              className="absolute flex flex-col items-center justify-center"
+              style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
+            >
+              <div className="glass-green w-28 h-28 rounded-full flex flex-col items-center justify-center text-center shadow-[0_0_45px_oklch(0.55_0.185_142_/_0.35)]">
+                <span
+                  className="text-primary font-black text-xs uppercase tracking-wider leading-tight"
+                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                >
+                  Clippers
+                  <br />
+                  Armada
+                </span>
+              </div>
+            </div>
+
+            {/* Output platform nodes */}
+            {outputPlatforms.map((p) => (
+              <div
+                key={p.name}
+                className="absolute flex items-center gap-2"
+                style={{ left: "82.5%", top: `${(p.y / 420) * 100}%`, transform: "translate(-50%, -50%)" }}
+              >
+                <div className="w-11 h-11 rounded-xl glass-strong flex items-center justify-center text-white/80">
+                  <PlatformIcon name={p.name} className="w-5 h-5" />
+                </div>
+                <span className="hidden sm:inline text-[10px] font-bold uppercase tracking-widest text-white/50 whitespace-nowrap">
+                  {p.label}
+                </span>
+              </div>
+            ))}
+      </div>
+    </motion.div>
+  )
+}
+
 /* ─── Ranks teaser ─── */
 const ranks = [
   {
@@ -351,57 +497,61 @@ const perks = [
 function CAPerks() {
   return (
     <section className="bg-white px-4 sm:px-6 lg:px-8 py-24 border-t border-zinc-100">
-      <div className="max-w-3xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <h2
-            className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-zinc-900 mb-12"
-            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            Cosa riceverai <span style={{ color: "oklch(0.60 0.19 142)" }}>ed imparerai.</span>
-          </h2>
-        </motion.div>
-
-        <div className="space-y-10 mb-14">
-          {perks.map((perk, i) => (
-            <motion.div
-              key={perk.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="border-l-4 pl-6 py-1"
-              style={{ borderColor: "oklch(0.60 0.19 142)" }}
+            <h2
+              className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-zinc-900 mb-12"
+              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
-              <h3
-                className="text-lg font-black text-zinc-900 mb-2"
-                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              Cosa riceverai <span style={{ color: "oklch(0.60 0.19 142)" }}>ed imparerai.</span>
+            </h2>
+          </motion.div>
+
+          <div className="space-y-10 mb-14">
+            {perks.map((perk, i) => (
+              <motion.div
+                key={perk.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="border-l-4 pl-6 py-1"
+                style={{ borderColor: "oklch(0.60 0.19 142)" }}
               >
-                {perk.title}
-              </h3>
-              <p className="text-zinc-500 leading-relaxed">{perk.desc}</p>
-            </motion.div>
-          ))}
+                <h3
+                  className="text-lg font-black text-zinc-900 mb-2"
+                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                >
+                  {perk.title}
+                </h3>
+                <p className="text-zinc-500 leading-relaxed">{perk.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center lg:text-left"
+          >
+            <a
+              href="#apply"
+              className="inline-block px-10 py-4 rounded-full bg-primary text-white font-black text-sm uppercase tracking-widest hover:bg-primary/90 transition-all duration-300 shadow-[0_0_35px_oklch(0.55_0.185_142_/_0.35)] hover:shadow-[0_0_55px_oklch(0.55_0.185_142_/_0.55)] hover:-translate-y-0.5 active:scale-95"
+            >
+              Unisciti
+            </a>
+          </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center"
-        >
-          <a
-            href="#apply"
-            className="inline-block px-10 py-4 rounded-full bg-primary text-white font-black text-sm uppercase tracking-widest hover:bg-primary/90 transition-all duration-300 shadow-[0_0_35px_oklch(0.55_0.185_142_/_0.35)] hover:shadow-[0_0_55px_oklch(0.55_0.185_142_/_0.55)] hover:-translate-y-0.5 active:scale-95"
-          >
-            Unisciti
-          </a>
-        </motion.div>
+        <CAFlowDiagramVisual />
       </div>
     </section>
   )
