@@ -87,7 +87,7 @@ function CAHero() {
         >
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.3em] text-primary border border-primary/25 bg-primary/5 rounded-full px-4 py-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            03 · Clippers Armada
+            Clippers Armada
           </span>
         </motion.div>
 
