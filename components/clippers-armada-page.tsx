@@ -173,6 +173,31 @@ function CAConcept() {
           </p>
         </motion.div>
 
+        {/* Historical parallel + mission quote */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12"
+        >
+          <p className="text-zinc-500 leading-relaxed mb-6">
+            Una volta si lasciavano poster sui muri o si imbucavano pamphlet nelle lettere. Oggi i
+            clippers sono chi amplifica la voce nel mare di battaglia moderno: i social. Non stiamo
+            spammando né ingannando l'algoritmo — stiamo spingendo una visione.
+          </p>
+          <p
+            className="text-xl sm:text-2xl font-black text-zinc-900 leading-snug"
+            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+          >
+            Non sei qui per fare views.{" "}
+            <span style={{ color: "oklch(0.60 0.19 142)" }}>
+              Sei qui per scrivere la storia di una generazione
+            </span>{" "}
+            e imparare la skill più utile nel mercato moderno: crescere sui social.
+          </p>
+        </motion.div>
+
         {/* Exclusive callout */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -307,6 +332,60 @@ function CAForm() {
   )
 }
 
+/* ─── Analytics preview ─── */
+const analyticsShots = [
+  "/analytics/analytics-1.png",
+  "/analytics/analytics-2.png",
+  "/analytics/analytics-3.png",
+  "/analytics/analytics-4.jpg",
+  "/analytics/analytics-5.jpg",
+  "/analytics/analytics-6.png",
+  "/analytics/analytics-7.jpg",
+]
+
+function CAAnalytics() {
+  return (
+    <section className="bg-white px-4 sm:px-6 lg:px-8 py-24 border-t border-zinc-100">
+      <div className="max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-14"
+        >
+          <h2
+            className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-zinc-900"
+            style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+          >
+            I <span style={{ color: "oklch(0.60 0.19 142)" }}>risultati</span>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {analyticsShots.map((src, i) => (
+            <motion.div
+              key={src}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              className="rounded-2xl overflow-hidden border border-zinc-200 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.10)] bg-zinc-50"
+            >
+              <img
+                src={src}
+                alt={`Analitiche ${i + 1}`}
+                className="w-full h-auto object-cover"
+                draggable={false}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ─── Footer ─── */
 function CAFooter() {
   return (
@@ -343,6 +422,7 @@ export function ClippersArmadaPage() {
       <CAHero />
       <CAConcept />
       <CAForm />
+      <CAAnalytics />
       <CAFooter />
     </main>
   )
