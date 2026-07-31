@@ -11,7 +11,7 @@ import { GenerazioneLogo } from "@/components/generazione-logo"
 /* ─── Role data ─── */
 const activeRoles = [
   { id: 1, label: "GID", number: "01", sublabel: "Attivismo", image: "/copertina gid.JPG", href: "/gid" },
-  { id: 3, label: "Clippers\nArmada", number: "02", sublabel: "Sport & Cultura", image: "/placeholder.jpg", href: "/clippers-armada" },
+  { id: 3, label: "Clippers\nArmada", number: "02", sublabel: "Sport & Cultura", image: "/clippers armada.png", href: "/clippers-armada" },
 ]
 
 const comingSoonRoles = [
