@@ -5,9 +5,6 @@ import { motion } from "framer-motion"
 import { ArrowLeft } from "lucide-react"
 import { GenerazioneLogo } from "@/components/generazione-logo"
 
-// Drop in the video path when ready, e.g. "/clippers-trailer.mp4"
-const VSL_VIDEO_SRC: string | null = null
-
 // Drop in your form embed URL when ready (Typeform, JotForm, etc.)
 // e.g. "https://form.typeform.com/to/XXXXXXXX"
 const FORM_EMBED_SRC: string | null = null
@@ -189,7 +186,7 @@ function CAConcept() {
             I dettagli operativi vengono condivisi esclusivamente con chi completa la candidatura.
           </p>
           <p className="text-zinc-400 text-sm mt-1">
-            Guarda il trailer, poi fai domanda qui sotto.
+            Fai domanda qui sotto.
           </p>
         </motion.div>
       </div>
@@ -263,76 +260,6 @@ function CARanks() {
             </motion.div>
           ))}
         </div>
-      </div>
-    </section>
-  )
-}
-
-/* ─── Trailer + CTA text ─── */
-function CATrailer() {
-  return (
-    <section className="bg-white px-4 sm:px-6 lg:px-8 py-24 border-t border-zinc-100">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <span className="inline-block text-[10px] font-bold uppercase tracking-[0.3em] text-primary border border-primary/25 bg-primary/5 rounded-full px-4 py-1.5">
-            Il Trailer
-          </span>
-        </motion.div>
-
-        {/* Light-style VSL frame */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative aspect-video rounded-3xl overflow-hidden bg-zinc-50 border border-zinc-200 shadow-[0_8px_50px_-12px_rgba(0,0,0,0.10)] group cursor-pointer hover:shadow-[0_20px_60px_-12px_rgba(0,0,0,0.16)] transition-shadow duration-500"
-        >
-          {VSL_VIDEO_SRC ? (
-            <video
-              src={VSL_VIDEO_SRC}
-              controls
-              playsInline
-              preload="metadata"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <div className="absolute top-5 left-5 w-8 h-8 border-t-2 border-l-2 border-primary/30 rounded-tl-sm group-hover:border-primary transition-colors duration-300" />
-              <div className="absolute top-5 right-5 w-8 h-8 border-t-2 border-r-2 border-primary/30 rounded-tr-sm group-hover:border-primary transition-colors duration-300" />
-              <div className="absolute bottom-5 left-5 w-8 h-8 border-b-2 border-l-2 border-primary/30 rounded-bl-sm group-hover:border-primary transition-colors duration-300" />
-              <div className="absolute bottom-5 right-5 w-8 h-8 border-b-2 border-r-2 border-primary/30 rounded-br-sm group-hover:border-primary transition-colors duration-300" />
-
-              <div className="w-20 h-20 rounded-full border-2 border-zinc-200 bg-white shadow-sm flex items-center justify-center mb-4 group-hover:border-primary group-hover:shadow-[0_0_25px_oklch(0.55_0.185_142_/_0.20)] transition-all duration-300">
-                <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[18px] border-l-zinc-900 ml-1 group-hover:border-l-primary transition-colors duration-300" />
-              </div>
-              <span className="text-xs font-bold uppercase tracking-[0.25em] text-zinc-400 group-hover:text-primary transition-colors duration-300">
-                Guarda il trailer
-              </span>
-            </div>
-          )}
-        </motion.div>
-
-        {/* Light text CTA below trailer */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-14 text-center"
-        >
-          <p className="text-zinc-500 leading-relaxed mb-1">
-            Se sei arrivato fin qui, sai già cosa fare.
-          </p>
-          <p className="text-zinc-400 text-sm">
-            Compila la candidatura qui sotto — ti contatteremo noi.
-          </p>
-        </motion.div>
       </div>
     </section>
   )
@@ -415,7 +342,6 @@ export function ClippersArmadaPage() {
       <CANavbar />
       <CAHero />
       <CAConcept />
-      <CATrailer />
       <CAForm />
       <CAFooter />
     </main>
